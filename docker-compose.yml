@@ -1,0 +1,29 @@
+ansible-cli:
+  build: .
+  dockerfile: Dockerfile
+  container_name: ansible-cli
+  hostname: ansible-cli
+  environment:
+   - ANSIBLE_CONFIG=/tmp/ansible/ansible.cfg
+   - AWS_PROFILE=ansible
+   - APP=$bamboo_APP
+  volumes:
+   - ./.ssh:/root/.ssh
+   - ./.aws:/root/.aws
+   - ./.ash/.ashrc:/root/.ashrc
+   - ./project:/tmp/ansible
+   - ../roles:/tmp/ansible/roles
+   - ../playbooks:/tmp/ansible/playbooks
+ship:
+  image: somster/ship
+  environment:
+   - ANSIBLE_CONFIG=/tmp/ansible/ansible.cfg
+   - AWS_PROFILE=ansible
+   - APP=$bamboo_APP
+  volumes:
+   - ./.ssh:/root/.ssh
+   - ./.aws:/root/.aws
+   - ./.ash/.ashrc:/root/.ashrc
+   - ./project:/tmp/ansible
+   - ../roles:/tmp/ansible/roles
+   - ../playbooks:/tmp/ansible/playbooks

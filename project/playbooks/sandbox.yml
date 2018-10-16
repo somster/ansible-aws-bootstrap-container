@@ -1,0 +1,7 @@
+---
+- hosts: bamboo_sandbox
+  gather_facts: no
+  tasks:
+  - include_role:
+      name: bamboo
+      tasks_from: sandbox

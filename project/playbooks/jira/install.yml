@@ -1,0 +1,8 @@
+#test playbook
+---
+- hosts: jira_datacenter_sandbox
+  gather_facts: no
+  tasks:
+  - include_role:
+      name: jira
+      tasks_from: install
